@@ -1,0 +1,107 @@
+<project xmlns="http:/f/maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http:/f/maven.apache.org/POM/4.0.0">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>info.guardianproject</groupId>
+  <artifactId>scryptbot</artifactId>
+  <version>0.1.0</version>
+  <name>ScryptBot</name>
+  <description>scrypt test for Android</description>
+  <url>https://guardianproject.info/</url>
+  <!--
+
+  Use "mvn clean package" to build the code packaged into a basic multibit.jar
+  Use "mvn clean verify" before submitting a patch
+  Use "mvn clean install" to build the executable jar, installers and Mac DMG
+
+  Use "mvn site:site" to generate a complete website under target/site
+  Use "mvn site:run" to run a local webserver localhost:8080/index.html
+
+  -->
+
+  <licenses>
+    <license>
+      <name>MIT</name>
+      <url>http://www.opensource.org/licenses/mit-license.php</url>
+      <distribution>repo</distribution>
+      <comments>A business-friendly OSS license</comments>
+    </license>
+  </licenses>
+
+  <scm>
+    <!-- Public read-only source -->
+    <url>https://github.com/devrandom/scryptbot</url>
+  </scm>
+
+  <repositories>
+    <repository>
+      <id>bitcoinj-release</id>
+      <releases/>
+      <url>http://nexus.bitcoinj.org/content/repositories/releases</url>
+    </repository>
+    <repository>
+      <id>bitcoinj-snapshot</id>
+      <snapshots/>
+      <url>http://nexus.bitcoinj.org/content/repositories/snapshots</url>
+    </repository>
+    <repository>
+     <id>xchange-snapshot</id>
+     <snapshots/>
+     <url>http://nexus.bitcoinj.org/content/repositories/snapshots</url>
+   </repository>
+    <!-- zxing repo -->
+    <repository>
+      <id>mvn-adamgent</id>
+      <url>http://mvn-adamgent.googlecode.com/svn/maven/release</url>
+      <name>Adam Gent Maven Repository</name>
+    </repository>
+  </repositories>
+
+  <build>
+    <finalName>scryptbot</finalName>
+    <resources>
+      <!-- filter properties files e.g. version.properties -->
+      <resource>
+        <directory>src</directory>
+        <filtering>true</filtering>
+        <includes>
+          <include>**/*.properties</include>
+        </includes>
+      </resource>
+      <resource>
+        <directory>src</directory>
+        <filtering>false</filtering>
+        <excludes>
+          <exclude>**/*.properties</exclude>
+          <exclude>**/*.blockchain</exclude>
+        </excludes>
+      </resource>
+    </resources>
+    <plugins>
+      <!-- Standard compile to ensure Java6 is used in all environments (e.g. Jenkins) -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>2.3.2</version>
+        <configuration>
+          <source>1.6</source>
+          <target>1.6</target>
+          <showDeprecation>true</showDeprecation>
+          <showWarnings>true</showWarnings>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+  <dependencies>
+    <dependency>
+      <groupId>com.lambdaworks</groupId>
+      <artifactId>scrypt</artifactId>
+      <version>1.3.2</version>
+    </dependency>
+  </dependencies>
+
+  <properties>
+    <!-- Source encoding -->
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+  </properties>
+</project>
